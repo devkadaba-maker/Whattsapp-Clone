@@ -1,5 +1,4 @@
-import mongoose from 'mongoose';
-
+import mongoose from 'mongoose'
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -9,18 +8,21 @@ const userSchema = new mongoose.Schema({
   fullName: {
     type: String,
     required: true
-  },
+  }, 
   password: {
     type: String,
     required: true,
-    minlength: 6
+    minlength: 6,
   },
   profilepic: {
     type: String,
     default: ""
   }
-}, { timestamps: true });
+}, {
+  timestamps: true
+});
 
-const User = mongoose.model("User", userSchema);
 
-export default User;
+const user = mongoose.model("User", userSchema);
+
+export default user
