@@ -14,7 +14,6 @@ deploymentTarget = "autoscale"
 ignorePorts = false
 
 [workflows]
-runButton = "Dev Server"
 
 [[workflows.workflow]]
 name = "Dev Server"
@@ -28,3 +27,7 @@ args = "cd backend && npm run dev"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "cd frontend && npm run dev"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
