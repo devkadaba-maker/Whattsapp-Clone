@@ -3,6 +3,7 @@ import authRoutes from './routes/auth.routes.js'
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import { connectDB } from './lib/db.js';
 
 
@@ -13,6 +14,10 @@ const port = process.env.PORT || 5000;
 const app = express();
 
 // Middleware
+app.use(cors({
+  origin: ["http://localhost:5173", "http://localhost:3000", "https://*.replit.dev"],
+  credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 
