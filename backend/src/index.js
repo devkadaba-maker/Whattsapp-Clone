@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import { connectDB } from './lib/db.js';
 
+
 dotenv.config();
 
 const port = process.env.PORT || 5000;
