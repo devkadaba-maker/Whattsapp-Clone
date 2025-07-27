@@ -100,16 +100,14 @@ export const updateProfile = async(req, res) => {
     const {profilepic} = req.body
     const userId = req.user._id
     if(!profilepic){
-      res.status(400).json({message: "profilepic is required"})
+      return res.status(400).json({message: "profilepic is required"})
     }
     const uploadResonse = await cloudinary.uploader.upload(profilepic)
     const updatedUser = await User.findByIdAndUpdate(userId, {profilepic: uploadResonse.secure_url}, {new: true})
     res.status(200).json(updatedUser)
-    }
   }catch(error){
-  console.log("error in update profile controller:", error);
-  res.status(500).json({message: "internal server error"})
-  
+    console.log("error in update profile controller:", error);
+    res.status(500).json({message: "internal server error"})
   }
 }
   
