@@ -11,10 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "@types/node": "^22.13.11",
-    "axios": "^1.11.0",
     "cors": "^2.8.5",
-    "daisyui": "^5.0.47",
-    "zustand": "^5.0.6"
+    "daisyui": "^5.0.47"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
