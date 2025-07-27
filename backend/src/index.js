@@ -1,6 +1,6 @@
 import express from 'express';
 import authRoutes from './routes/auth.routes.js'
-import messageRoutes from './routes/message.routes.js'
+import messageRoutes from './routes/message.route.js'
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
