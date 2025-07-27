@@ -1,37 +1,29 @@
-import { useEffect } from 'react'
-import Sidebar from '../components/Sidebar'
-import ChatContainer from '../components/ChatContainer'
-import { useChatStore } from '../store/useChatStore'
+import React from 'react';
+import { useAuthStore } from '../store/useAuthStore';
+import Sidebar from '../components/Sidebar';
+import ChatContainer from '../components/ChatContainer';
 
 const HomePage = () => {
-  const { selectedUser } = useChatStore()
+  const { authUser } = useAuthStore();
 
-  return (
-    <div className="h-screen bg-base-200">
-      <div className="flex items-center justify-center pt-20 px-4">
-        <div className="bg-base-100 rounded-lg shadow-cl w-full max-w-6xl h-[calc(100vh-8rem)]">
-          <div className="flex h-full rounded-lg overflow-hidden">
-            <Sidebar />
-            {!selectedUser ? (
-              <div className="flex-1 flex flex-col items-center justify-center">
-                <div className="max-w-md text-center">
-                  <div className="grid h-20 w-20 place-items-center rounded-full bg-primary/10 mx-auto mb-4">
-                    <span className="text-3xl">💬</span>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2">Welcome to ChatApp!</h3>
-                  <p className="text-base-content/60">
-                    Select a conversation from the sidebar to start chatting
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <ChatContainer />
-            )}
-          </div>
+  if (!authUser) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold mb-4">Please log in to continue</h2>
         </div>
       </div>
-    </div>
-  )
-}
+    );
+  }
 
-export default HomePage
+  return (
+    <div className="min-h-screen bg-base-200">
+      <div className="flex h-screen bg-base-100">
+        <Sidebar />
+        <ChatContainer />
+      </div>
+    </div>
+  );
+};
+
+export default HomePage;
