@@ -1,31 +1,56 @@
 
+<old_str>
 import { create } from 'zustand';
-import toast from 'react-hot-toast';
+import { persist } from 'zustand/middleware';
+import { checkAuth } from '../../../backend/src/controllers/auth.controller';
+import axiosInstance from '../lib/axios'
+import { set } from 'mongoose';
+export const useAuthStore = create(() => ({
+authUser:null,
+isCheckingAuth:true,
+isSignUp:false,
+isLoggingIn:false,
+isUpdatingProfile:false,
 
-const API_BASE_URL = window.location.hostname === 'localhost' 
-  ? 'http://localhost:5000/api' 
-  : `https://${window.location.hostname}:5000/api`;
+
+  checkAuth: async () => {
+    try{
+      const res = await axiosInstance.get("/auth/check");
+      
+      
+    }catch(error){
+      console.log("error in checkAuth", error);
+      set({authUser:res.data})
+      console.log("error in checkAuth", error)
+      set({authUser:null})
+      
+
+    }finally{
+      set({isCheckingAuth:false})
+    }
+  }
+  
+  
+  
+}))
+</old_str>
+<new_str>
+import { create } from 'zustand';
+import axiosInstance from '../lib/axios';
 
 export const useAuthStore = create((set) => ({
   authUser: null,
+  isCheckingAuth: true,
   isSigningUp: false,
   isLoggingIn: false,
   isUpdatingProfile: false,
-  isCheckingAuth: true,
 
   checkAuth: async () => {
     try {
-      const res = await fetch(`${API_BASE_URL}/auth/check`, {
-        credentials: 'include',
-      });
-      const data = await res.json();
-      if (res.ok) {
-        set({ authUser: data, isCheckingAuth: false });
-      } else {
-        set({ authUser: null, isCheckingAuth: false });
-      }
+      const res = await axiosInstance.get("/auth/check");
+      set({ authUser: res.data, isCheckingAuth: false });
     } catch (error) {
-      console.log('Error in checkAuth:', error);
+      console.log("error in checkAuth", error);
       set({ authUser: null, isCheckingAuth: false });
     }
   },
@@ -33,24 +58,10 @@ export const useAuthStore = create((set) => ({
   signup: async (data) => {
     set({ isSigningUp: true });
     try {
-      const res = await fetch(`${API_BASE_URL}/auth/signup`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-        credentials: 'include',
-      });
-      const result = await res.json();
-      if (res.ok) {
-        set({ authUser: result, isSigningUp: false });
-        toast.success('Account created successfully');
-      } else {
-        toast.error(result.message);
-        set({ isSigningUp: false });
-      }
+      const res = await axiosInstance.post("/auth/signup", data);
+      set({ authUser: res.data, isSigningUp: false });
     } catch (error) {
-      toast.error('Something went wrong');
+      console.log("error in signup", error);
       set({ isSigningUp: false });
     }
   },
@@ -58,38 +69,21 @@ export const useAuthStore = create((set) => ({
   login: async (data) => {
     set({ isLoggingIn: true });
     try {
-      const res = await fetch(`${API_BASE_URL}/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-        credentials: 'include',
-      });
-      const result = await res.json();
-      if (res.ok) {
-        set({ authUser: result, isLoggingIn: false });
-        toast.success('Logged in successfully');
-      } else {
-        toast.error(result.message);
-        set({ isLoggingIn: false });
-      }
+      const res = await axiosInstance.post("/auth/login", data);
+      set({ authUser: res.data, isLoggingIn: false });
     } catch (error) {
-      toast.error('Something went wrong');
+      console.log("error in login", error);
       set({ isLoggingIn: false });
     }
   },
 
   logout: async () => {
     try {
-      await fetch(`${API_BASE_URL}/auth/logout`, {
-        method: 'POST',
-        credentials: 'include',
-      });
+      await axiosInstance.post("/auth/logout");
       set({ authUser: null });
-      toast.success('Logged out successfully');
     } catch (error) {
-      toast.error('Something went wrong');
+      console.log("error in logout", error);
     }
-  },
-}));
+  }
+}))
+</new_str>

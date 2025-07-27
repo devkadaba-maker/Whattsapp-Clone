@@ -1,32 +1,33 @@
-import express from "express";
-import { config } from "dotenv";
-import cors from "cors";
-import cookieParser from "cookie-parser";
+import express from 'express';
+import authRoutes from './routes/auth.routes.js'
+import messageRoutes from './routes/message.route.js'
+import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import { connectDB } from './lib/db.js';
 
-import authRoutes from "./routes/auth.routes.js";
-import messageRoutes from "./routes/message.route.js";
 
-import { connectDB } from "./lib/db.js";
+dotenv.config();
 
-config();
+const port = process.env.PORT || 5000;
 
 const app = express();
 
-const PORT = process.env.PORT || 5000;
-
+// Middleware
+app.use(cors({
+  origin: ["http://localhost:5173", "http://localhost:3000", "https://*.replit.dev"],
+  credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-  origin: ["http://localhost:5173", "https://nodejs.your-repl-url.replit.dev"],
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-}));
 
-app.use("/api/auth", authRoutes);
-app.use("/api/messages", messageRoutes);
+app.use("/api/auth", authRoutes)
+app.use("/api/message", messageRoutes)
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log("Server is running on port " + PORT);
-  connectDB();
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server is running on port ${port}`);
+  connectDB()
+ 
 });
+
