@@ -3,6 +3,7 @@ const router = express.Router()
 import { signup, login, logout } from '../controllers/auth.controller.js'
 import { protectRoute } from '../middleware/auth.middleware.js'
 import { updateProfile } from '../controllers/auth.controller.js'
+import { checkAuth } from '../controllers/auth.controller.js'
 router.post("/signup", signup)
 
 router.post("/login", login);
