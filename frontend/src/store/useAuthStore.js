@@ -2,7 +2,9 @@
 import { create } from 'zustand';
 import toast from 'react-hot-toast';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = window.location.hostname === 'localhost' 
+  ? 'http://localhost:5000/api' 
+  : `https://${window.location.hostname}:5000/api`;
 
 export const useAuthStore = create((set) => ({
   authUser: null,
