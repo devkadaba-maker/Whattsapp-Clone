@@ -13,8 +13,8 @@ function App() {
   const { authUser, checkAuth} = useAuthStore()
   useEffect(() => {
     checkAuth()
-  })
-  
+  },[checkAuth])
+  console.log(authUser)
   return (
     <div className="min-h-screen bg-base-100">
       <Navbar />

@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { checkAuth } from '../../../backend/src/controllers/auth.controller';
-import axiosInstance from '../lib/axiosInstance'
+import axiosInstance from '../lib/axios'
 import { set } from 'mongoose';
 export const useAuthStore = create(() => ({
 authUser:null,
