@@ -6,8 +6,16 @@ import SignUpPage from './pages/signUpPage'
 import LoginPage from './pages/loginPage'
 import SettingsPage from './pages/settingsPage'
 import ProfilePage from './pages/profilePage'
+import { useAuthStore } from './store/useAuthStore'
 
-function App() {
+const App = () => {
+  const {authUser, checkAuth} = useAuthStore()
+
+  useEffect(() => {
+    checkAuth()
+  },[checkAuth])
+
+  console.log(authUser)
   return (
     <div className="min-h-screen bg-base-100">
       <Navbar />
