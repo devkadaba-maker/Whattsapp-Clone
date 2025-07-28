@@ -14,7 +14,12 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ["https://cb378054-078b-4d30-a41a-2135c7a4caff-00-2uq7d29wzoour.picard.replit.dev/api"],
+  origin: [
+    "http://localhost:5173", 
+    "http://localhost:3000", 
+    "https://cb378054-078b-4d30-a41a-2135c7a4caff-00-2uq7d29wzoour.picard.replit.dev",
+    "https://cb378054-078b-4d30-a41a-2135c7a4caff-00-2uq7d29wzoour.picard.replit.dev:3000"
+  ],
   credentials: true
 }));
 app.use(express.json());
