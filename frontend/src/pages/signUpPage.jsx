@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
 import React from "react";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { MessageSquare } from "lucide-react";
