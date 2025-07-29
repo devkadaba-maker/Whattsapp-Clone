@@ -10,6 +10,7 @@ import { Eye } from "lucide-react";
 import { EyeOff } from "lucide-react";
 import { Loader2 } from "lucide-react";
 import AuthImagePattern from "../components/AuthImagePattern";
+import toast from "react-hot-toast"
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,20 +22,21 @@ const SignUpPage = () => {
   const { signup, isSigningUp } = useAuthStore();
 
   const validateForm = () => {
-    return formData.fullName.trim() && formData.email.trim() && formData.password.length >= 6;
-  };
+  if (formData.fullName.trim())return toast.error("Full name is required")
+    if (formData.email.trim()) return toast.error("Email is required")
+    if (formData.password.length >= 6) return toast.error("Password must be at least 6 characters long")
+    if(!/\S+@\S+\.\S+/.test(formData.email)) return toast.error("Invalid email format")
+if (formData.password.trim()) return toast.error("Password is required")}
+  
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!validateForm()) {
-      return;
-    }
-    
-    await signup(formData);
-  };
+  return true
+}
 
-  return (
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+    return (
     <div className="min-h-screen grid lg:grid-cols-2">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="w-full max-w-md space-y-8">
@@ -125,7 +127,7 @@ const SignUpPage = () => {
             <button 
               type="submit" 
               className="btn btn-primary w-full" 
-              disabled={isSigningUp || !validateForm()}
+              disabled={isSigningUp}
             >
               {isSigningUp ? (
                 <>
