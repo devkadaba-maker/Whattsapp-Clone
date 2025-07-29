@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom"
 import React from "react";
 import { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
@@ -9,6 +9,7 @@ import { Lock } from "lucide-react";
 import { Eye } from "lucide-react";
 import { EyeOff } from "lucide-react";
 import { Loader2 } from "lucide-react";
+import AuthImagePattern from "../components/AuthImagePattern";
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -124,8 +125,22 @@ const SignUpPage = () => {
               )}
             </button>
           </form>
+          <div className="text-center">
+            <p className="text-base-content/60">
+              Already have an account?{" "}
+              <Link to="/login" className="link link-primary">
+                Sign in
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
+      <AuthImagePattern
+        title="Join our community"
+        subtitle="Connect with friends and share your moments with the world." 
+        />
+        
+      
     </div>
   );
 };
