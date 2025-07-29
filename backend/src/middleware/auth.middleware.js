@@ -9,7 +9,6 @@ export const protectRoute = async (req, res, next) => {
 
     const token = req.cookies.jwt;
     if (!token) {
-      console.log("No JWT token found in cookies.");
       return res.status(401).json({ message: "Not authorized, no token" });
     }
     console.log("JWT Token found:", token.substring(0, 15) + "..."); // Log part of it
