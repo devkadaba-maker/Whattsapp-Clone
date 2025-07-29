@@ -20,10 +20,18 @@ const SignUpPage = () => {
   });
   const { signup, isSigningUp } = useAuthStore();
 
-  const validateForm = {};
+  const validateForm = () => {
+    return formData.fullName.trim() && formData.email.trim() && formData.password.length >= 6;
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+    
+    await signup(formData);
   };
 
   return (
@@ -114,7 +122,11 @@ const SignUpPage = () => {
               </div>
             </div>
 
-            <button type="submit" className="btn btn-primary w-full" disabled={isSigningUp}>
+            <button 
+              type="submit" 
+              className="btn btn-primary w-full" 
+              disabled={isSigningUp || !validateForm()}
+            >
               {isSigningUp ? (
                 <>
                   <Loader2 className="size-5 animate-spin" />
@@ -138,9 +150,7 @@ const SignUpPage = () => {
       <AuthImagePattern
         title="Join our community"
         subtitle="Connect with friends and share your moments with the world." 
-        />
-        
-      
+      />
     </div>
   );
 };
