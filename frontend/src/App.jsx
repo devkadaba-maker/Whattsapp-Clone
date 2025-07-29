@@ -7,6 +7,7 @@ import LoginPage from './pages/loginPage'
 import SettingsPage from './pages/settingsPage'
 import ProfilePage from './pages/profilePage'
 import { useAuthStore } from './store/useAuthStore'
+import { Navigate } from 'react-router-dom'
 import { Loader } from "lucide-react"
 const App = () => {
   const {authUser, checkAuth, isCheckingAuth} = useAuthStore()
@@ -29,11 +30,11 @@ const App = () => {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/" element={authUser ? <HomePage/> : <Navigate to='/login'/>} />
+        <Route path="/signup" element={ !authUser ? <SignUpPage /> : <Navigate to="/"/>} />
+        <Route path="/login" element={ !authUser ? <LoginPage /> : <Navigate to="/"/>} />
+        <Route path="/settings" element={<SettingsPage /> } />
+        <Route path="/profile" element={authUser ? <ProfilePage /> : <Navigate to='/login'/>} />
       </Routes>
     </div>
   )
