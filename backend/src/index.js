@@ -22,8 +22,8 @@ app.use(cors({
   ],
   credentials: true
 }));
-app.use(express.json());
 app.use(cookieParser());
+app.use(express.json());
 
 app.use("/api/auth", authRoutes)
 app.use("/api/message", messageRoutes)
