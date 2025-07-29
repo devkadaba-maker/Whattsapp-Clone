@@ -22,21 +22,27 @@ const SignUpPage = () => {
   const { signup, isSigningUp } = useAuthStore();
 
   const validateForm = () => {
-  if (formData.fullName.trim())return toast.error("Full name is required")
-    if (formData.email.trim()) return toast.error("Email is required")
-    if (formData.password.length >= 6) return toast.error("Password must be at least 6 characters long")
+  if (!formData.fullName.trim()) return toast.error("Full name is required")
+    if (!formData.email.trim()) return toast.error("Email is required")
+    if (formData.password.length < 6) return toast.error("Password must be at least 6 characters long")
     if(!/\S+@\S+\.\S+/.test(formData.email)) return toast.error("Invalid email format")
-if (formData.password.trim()) return toast.error("Password is required")}
-  
-
-  return true
+if (!formData.password.trim()) return toast.error("Password is required")
+return true;
 }
 
 
 
 const handleSubmit = async (e) => {
-  e.preventDefault();
-    return (
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    await signup(formData);
+  };
+
+  return (
     <div className="min-h-screen grid lg:grid-cols-2">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="w-full max-w-md space-y-8">
