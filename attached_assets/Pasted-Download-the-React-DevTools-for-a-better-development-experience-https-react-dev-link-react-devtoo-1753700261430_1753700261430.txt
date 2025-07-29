@@ -1,0 +1,83 @@
+Download the React DevTools for a better development experience: https://react.dev/link/react-devtools
+App.jsx:18 null
+App.jsx:18 null
+useAuthStore.js:14 
+            
+            
+           GET https://cb378054-078b-4d30-a41a-2135c7a4caff-00-2uq7d29wzoour.picard.replit.dev/api/auth/check 401 (Unauthorized)
+dispatchXhrRequest @ axios.js?v=b11f9fea:1672
+xhr @ axios.js?v=b11f9fea:1552
+dispatchRequest @ axios.js?v=b11f9fea:2027
+_request @ axios.js?v=b11f9fea:2248
+request @ axios.js?v=b11f9fea:2139
+Axios.<computed> @ axios.js?v=b11f9fea:2267
+wrap @ axios.js?v=b11f9fea:8
+checkAuth @ useAuthStore.js:14
+(anonymous) @ App.jsx:15
+react-stack-bottom-frame @ react-dom_client.js?v=b11f9fea:17478
+runWithFiberInDEV @ react-dom_client.js?v=b11f9fea:1485
+commitHookEffectListMount @ react-dom_client.js?v=b11f9fea:8460
+commitHookPassiveMountEffects @ react-dom_client.js?v=b11f9fea:8518
+commitPassiveMountOnFiber @ react-dom_client.js?v=b11f9fea:9887
+recursivelyTraversePassiveMountEffects @ react-dom_client.js?v=b11f9fea:9868
+commitPassiveMountOnFiber @ react-dom_client.js?v=b11f9fea:9984
+recursivelyTraversePassiveMountEffects @ react-dom_client.js?v=b11f9fea:9868
+commitPassiveMountOnFiber @ react-dom_client.js?v=b11f9fea:9984
+recursivelyTraversePassiveMountEffects @ react-dom_client.js?v=b11f9fea:9868
+commitPassiveMountOnFiber @ react-dom_client.js?v=b11f9fea:9881
+recursivelyTraversePassiveMountEffects @ react-dom_client.js?v=b11f9fea:9868
+commitPassiveMountOnFiber @ react-dom_client.js?v=b11f9fea:9881
+recursivelyTraversePassiveMountEffects @ react-dom_client.js?v=b11f9fea:9868
+commitPassiveMountOnFiber @ react-dom_client.js?v=b11f9fea:9984
+recursivelyTraversePassiveMountEffects @ react-dom_client.js?v=b11f9fea:9868
+commitPassiveMountOnFiber @ react-dom_client.js?v=b11f9fea:9899
+flushPassiveEffects @ react-dom_client.js?v=b11f9fea:11302
+(anonymous) @ react-dom_client.js?v=b11f9fea:11060
+performWorkUntilDeadline @ react-dom_client.js?v=b11f9fea:36
+<App>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=b11f9fea:250
+(anonymous) @ main.jsx:10
+useAuthStore.js:17 error in checkAuth AxiosError {message: 'Request failed with status code 401', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}
+App.jsx:18 null
+App.jsx:18 null
+useAuthStore.js:14 
+            
+            
+           GET https://cb378054-078b-4d30-a41a-2135c7a4caff-00-2uq7d29wzoour.picard.replit.dev/api/auth/check 401 (Unauthorized)
+dispatchXhrRequest @ axios.js?v=b11f9fea:1672
+xhr @ axios.js?v=b11f9fea:1552
+dispatchRequest @ axios.js?v=b11f9fea:2027
+_request @ axios.js?v=b11f9fea:2248
+request @ axios.js?v=b11f9fea:2139
+Axios.<computed> @ axios.js?v=b11f9fea:2267
+wrap @ axios.js?v=b11f9fea:8
+checkAuth @ useAuthStore.js:14
+(anonymous) @ App.jsx:15
+react-stack-bottom-frame @ react-dom_client.js?v=b11f9fea:17478
+runWithFiberInDEV @ react-dom_client.js?v=b11f9fea:1485
+commitHookEffectListMount @ react-dom_client.js?v=b11f9fea:8460
+commitHookPassiveMountEffects @ react-dom_client.js?v=b11f9fea:8518
+reconnectPassiveEffects @ react-dom_client.js?v=b11f9fea:10016
+recursivelyTraverseReconnectPassiveEffects @ react-dom_client.js?v=b11f9fea:9995
+reconnectPassiveEffects @ react-dom_client.js?v=b11f9fea:10054
+recursivelyTraverseReconnectPassiveEffects @ react-dom_client.js?v=b11f9fea:9995
+reconnectPassiveEffects @ react-dom_client.js?v=b11f9fea:10054
+recursivelyTraverseReconnectPassiveEffects @ react-dom_client.js?v=b11f9fea:9995
+reconnectPassiveEffects @ react-dom_client.js?v=b11f9fea:10009
+recursivelyTraverseReconnectPassiveEffects @ react-dom_client.js?v=b11f9fea:9995
+reconnectPassiveEffects @ react-dom_client.js?v=b11f9fea:10009
+recursivelyTraverseReconnectPassiveEffects @ react-dom_client.js?v=b11f9fea:9995
+reconnectPassiveEffects @ react-dom_client.js?v=b11f9fea:10054
+doubleInvokeEffectsOnFiber @ react-dom_client.js?v=b11f9fea:11461
+runWithFiberInDEV @ react-dom_client.js?v=b11f9fea:1485
+recursivelyTraverseAndDoubleInvokeEffectsInDEV @ react-dom_client.js?v=b11f9fea:11432
+commitDoubleInvokeEffectsInDEV @ react-dom_client.js?v=b11f9fea:11469
+flushPassiveEffects @ react-dom_client.js?v=b11f9fea:11309
+(anonymous) @ react-dom_client.js?v=b11f9fea:11060
+performWorkUntilDeadline @ react-dom_client.js?v=b11f9fea:36
+<App>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=b11f9fea:250
+(anonymous) @ main.jsx:10
+useAuthStore.js:17 error in checkAuth AxiosError {message: 'Request failed with status code 401', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}
+App.jsx:18 null
+App.jsx:18 null
