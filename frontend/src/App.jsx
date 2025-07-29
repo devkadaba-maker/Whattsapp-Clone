@@ -9,7 +9,7 @@ import ProfilePage from './pages/profilePage'
 import { useAuthStore } from './store/useAuthStore'
 import { Loader } from "lucide-react"
 const App = () => {
-  const {authUser, checkAuth} = useAuthStore()
+  const {authUser, checkAuth, isCheckingAuth} = useAuthStore()
 
   useEffect(() => {
     checkAuth()
@@ -17,7 +17,7 @@ const App = () => {
 
   console.log({authUser})
 
-  if (checkAuth && !authUser) {
+  if (isCheckingAuth) {
     return (
       <div className="min-h-screen bg-base-100 flex items-center justify-center">
         <Loader className="size-10 animate-spin" />
