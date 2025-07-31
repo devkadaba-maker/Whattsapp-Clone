@@ -10,6 +10,8 @@ import { useAuthStore } from './store/useAuthStore'
 import { Navigate } from 'react-router-dom'
 import { Loader } from "lucide-react"
 import { Toaster } from 'react-hot-toast'
+import './index.css'
+
 const App = () => {
   const {authUser, checkAuth, isCheckingAuth} = useAuthStore()
 
@@ -29,6 +31,7 @@ const App = () => {
   return (
     <div className="min-h-screen bg-base-100">
       <Navbar />
+      
 
       <Routes>
         <Route path="/" element={authUser ? <HomePage/> : <Navigate to='/login'/>} />
