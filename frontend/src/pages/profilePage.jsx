@@ -3,6 +3,8 @@ import { useAuthStore } from "../store/useAuthStore"
 import { Camera } from "lucide-react";
 const ProfilePage = () => {
   const {authUser, isUpdatingProfile} = useAuthStore()
+  const [selectedImg, setSelectedImg] = useState(null);
+  
   const handleImage = async (e) => {
     
   }
