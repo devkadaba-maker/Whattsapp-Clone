@@ -4,10 +4,10 @@ import { MessageSquare, Settings, User, LogOut, Home } from 'lucide-react';
 
 const Navbar = () => {
   const { logout, authUser } = useAuthStore();
-  
+
   if (authUser) {
     return (
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-primary">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">ChatApp</a>
         </div>
@@ -24,7 +24,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-primary">
       <div className="flex-1">
         <a className="btn btn-ghost text-xl">ChatApp</a>
       </div>
