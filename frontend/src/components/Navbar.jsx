@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuthStore } from '../store/useAuthStore';
+import { MessageSquare, Settings, User, LogOut, Home } from 'lucide-react';
 
 const Navbar = () => {
   const { logout, authUser } = useAuthStore();
@@ -12,10 +13,10 @@ const Navbar = () => {
         </div>
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
-            <li><a href="/">Home</a></li>
-            <li><a href="/settings">Settings</a></li>
-            <li><a href="/profile">Profile</a></li>
-            <li><button onClick={logout} className="btn btn-ghost">Logout</button></li>
+            <li><a href="/"><Home className="w-4 h-4 mr-2" />Home</a></li>
+            <li><a href="/settings"><Settings className="w-4 h-4 mr-2" />Settings</a></li>
+            <li><a href="/profile"><User className="w-4 h-4 mr-2" />Profile</a></li>
+            <li><button onClick={logout} className="btn btn-ghost"><LogOut className="w-4 h-4 mr-2" />Logout</button></li>
           </ul>
         </div>
       </div>
