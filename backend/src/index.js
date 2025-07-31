@@ -6,11 +6,8 @@ import express from 'express';
 import authRoutes from './routes/auth.routes.js'
 import messageRoutes from './routes/message.route.js'
 import cookieParser from 'cookie-parser';
-import dotenv from 'dotenv';
 import cors from 'cors';
 import { connectDB } from './lib/db.js';
-
-dotenv.config();
 
 const port = process.env.PORT || 5000;
 const app = express();
