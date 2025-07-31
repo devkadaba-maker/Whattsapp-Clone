@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Camera } from "lucide-react";
-import { useAuthStore } from "../store/authStore";
 const ProfilePage = () => {
-  const {authUser, isUpdatingProfile, updateProfile} = useAuthStore()
+  const {authUser, isUpdatingProfile} = useAuthStore()
   const handleImage = async (e) => {
     
   }
@@ -47,7 +46,10 @@ const ProfilePage = () => {
                 />
               </label>
             </div>
-          
+            <p className="text-sm text-zinc-400">
+              {isUpdatingProfile ? "Uploading..." : "Click the camera icon to update your photo"}
+            </p>
+            </div>
 
           
         
