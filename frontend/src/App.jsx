@@ -29,7 +29,7 @@ const App = () => {
     );
   }
   return (
-    <div className="min-h-screen bg-base-100" data-theme="retro">
+    <div className="min-h-screen bg-base-100">
       <Navbar />
       
 
