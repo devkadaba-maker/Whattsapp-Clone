@@ -4,11 +4,6 @@ import AuthImagePattern from "../components/AuthImagePattern";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare }  from "lucide-react";
 
-import { useState } from 'react';
-import { MessageSquare, Mail, Lock, Eye, EyeOff, Loader2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { useAuthStore } from '../store/useAuthStore';
-
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
