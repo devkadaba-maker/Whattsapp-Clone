@@ -16,6 +16,8 @@ const ProfilePage = () => {
       const base64Image = reader.result
       setSelectedImg(base64Image)
       await updateProfile({profilepic: base64Image})
+      // Clear selectedImg after successful upload so authUser.profilepic is used
+      setSelectedImg(null)
     }
 
   }
@@ -35,7 +37,7 @@ const ProfilePage = () => {
           <div className="flex flex-col items-center gap-4">
             <div className="relative">
               <img
-                src={selectedImg || authUser.profilePic || "/avatar.png"}
+                src={selectedImg || authUser.profilepic || "/avatar.png"}
                 alt="Profile"
                 className="size-32 rounded-full object-cover border-4 "
               />
