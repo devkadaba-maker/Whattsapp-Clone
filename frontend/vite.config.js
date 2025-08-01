@@ -11,7 +11,6 @@ export default defineConfig({
         changeOrigin: true,
       }
     },
-    host: '0.0.0.0',
-    port: 5173,
+    allowedHosts:["https://cb378054-078b-4d30-a41a-2135c7a4caff-00-2uq7d29wzoour.picard.replit.dev"]
   }
 })
