@@ -1,6 +1,11 @@
 import { useThemeStore } from "../store/useThemeStore"
 import { THEMES } from "../../constants";
-
+const PREVEIW_MESSAGES = [
+    {
+        
+    }
+    
+]
 
 
 const SettingsPage = () => {
