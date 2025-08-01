@@ -1,10 +1,7 @@
 import { useThemeStore } from "../store/useThemeStore"
 import { THEMES } from "../../constants";
 
-const PREVIEW_MESSAGES = [
-    {id: 1, content: "Hello, how are you?", isSent: false},
-    {id: 2, content: "I'm good, thanks!", isSent: true}
-]
+
 
 const SettingsPage = () => {
     const {theme, setTheme} = useThemeStore()
@@ -46,27 +43,7 @@ const SettingsPage = () => {
                         ))}
                     </div>
 
-                    <div className="mt-8">
-                        <h3 className="text-md font-medium mb-3">Preview</h3>
-                        <div className="bg-base-100 border border-base-300 rounded-lg p-4 space-y-2">
-                            {PREVIEW_MESSAGES.map((message) => (
-                                <div
-                                    key={message.id}
-                                    className={`flex ${message.isSent ? "justify-end" : "justify-start"}`}
-                                >
-                                    <div
-                                        className={`max-w-xs px-3 py-2 rounded-lg ${
-                                            message.isSent
-                                                ? "bg-primary text-primary-content"
-                                                : "bg-base-300 text-base-content"
-                                        }`}
-                                    >
-                                        {message.content}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
