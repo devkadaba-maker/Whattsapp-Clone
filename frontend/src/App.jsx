@@ -11,9 +11,11 @@ import { Navigate } from 'react-router-dom'
 import { Loader } from "lucide-react"
 import { Toaster } from 'react-hot-toast'
 import './index.css'
+import { useThemeStore } from './store/useThemeStore'
 
 const App = () => {
   const {authUser, checkAuth, isCheckingAuth} = useAuthStore()
+ const { theme } = useThemeStore()
 
   useEffect(() => {
     checkAuth()
@@ -29,7 +31,7 @@ const App = () => {
     );
   }
   return (
-    <div className="min-h-screen bg-base-100">
+    <div className="min-h-screen bg-base-100" data-theme={theme}>
       <Navbar />
       
 
