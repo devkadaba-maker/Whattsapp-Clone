@@ -48,7 +48,7 @@ const SettingsPage = () => {
 
                     <div className="mt-8">
                         <h3 className="text-md font-medium mb-3">Preview</h3>
-                        <div className="bg-base-200 rounded-lg p-4 space-y-2">
+                        <div className="bg-base-100 border border-base-300 rounded-lg p-4 space-y-2">
                             {PREVIEW_MESSAGES.map((message) => (
                                 <div
                                     key={message.id}
