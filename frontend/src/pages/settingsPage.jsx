@@ -2,9 +2,8 @@ import { useThemeStore } from "../store/useThemeStore"
 import { THEMES } from "../../constants";
 
 const PREVIEW_MESSAGES = [
-    { id: 1, content: "Hey! How's it going?", isSent: false },
-    { id: 2, content: "I'm doing great, thanks for asking!", isSent: true },
-    { id: 3, content: "That's awesome to hear!", isSent: false }
+    { id: 1, content: "Hey! How's it going?", isSent: false, time: "12:08 PM" },
+    { id: 2, content: "I'm doing great! Just working on some new features.", isSent: true, time: "12:09 PM" },
 ];
 
 const SettingsPage = () => {
@@ -49,23 +48,53 @@ const SettingsPage = () => {
 
                     <div className="mt-8">
                         <h3 className="text-lg font-semibold mb-3">Preview</h3>
-                        <div className="bg-base-100 border border-base-300 rounded-lg p-4 space-y-3 max-w-md">
-                            {PREVIEW_MESSAGES.map((message) => (
-                                <div
-                                    key={message.id}
-                                    className={`flex ${message.isSent ? "justify-end" : "justify-start"}`}
-                                >
-                                    <div
-                                        className={`max-w-xs px-3 py-2 rounded-lg text-sm ${
-                                            message.isSent
-                                                ? "bg-primary text-primary-content"
-                                                : "bg-base-300 text-base-content"
-                                        }`}
-                                    >
-                                        {message.content}
-                                    </div>
+                        <div className="bg-base-200 border border-base-300 rounded-lg overflow-hidden max-w-md">
+                            {/* User Header */}
+                            <div className="bg-base-100 border-b border-base-300 p-3 flex items-center gap-3">
+                                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-content font-semibold text-sm">
+                                    J
                                 </div>
-                            ))}
+                                <div>
+                                    <div className="font-medium text-sm">John Doe</div>
+                                    <div className="text-xs text-base-content/60">Online</div>
+                                </div>
+                            </div>
+                            
+                            {/* Messages */}
+                            <div className="p-4 space-y-3">
+                                {PREVIEW_MESSAGES.map((message) => (
+                                    <div key={message.id}>
+                                        <div className={`flex ${message.isSent ? "justify-end" : "justify-start"}`}>
+                                            <div
+                                                className={`max-w-xs px-3 py-2 rounded-lg text-sm ${
+                                                    message.isSent
+                                                        ? "bg-primary text-primary-content"
+                                                        : "bg-base-100 text-base-content border border-base-300"
+                                                }`}
+                                            >
+                                                {message.content}
+                                                <div className={`text-xs mt-1 ${
+                                                    message.isSent ? "text-primary-content/70" : "text-base-content/50"
+                                                }`}>
+                                                    {message.time}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            
+                            {/* Input Area */}
+                            <div className="bg-base-100 border-t border-base-300 p-3 flex items-center gap-2">
+                                <div className="flex-1 bg-base-200 rounded-full px-3 py-2 text-sm text-base-content/60">
+                                    This is a preview
+                                </div>
+                                <button className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-content">
+                                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
