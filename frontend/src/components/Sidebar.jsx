@@ -1,16 +1,21 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Users } from 'lucide-react';
 import SidebarSkeleton from './skeletons/SidebarSkeleton';
 import { useChatStore } from '../store/useChatStore';
 
 const Sidebar = () => {
   const { users, getUsers, isUsersLoading, selectedUser, setSelectedUser } = useChatStore();
+  const [filteredUsers, setFilteredUsers] = useState([]);
   const onlineUsers = [];
 
   useEffect(() => {
     getUsers();
   }, [getUsers]);
+
+  useEffect(() => {
+    setFilteredUsers(users);
+  }, [users]);
 
   if (isUsersLoading) return <SidebarSkeleton />;
 
@@ -25,7 +30,7 @@ const Sidebar = () => {
       </div>
       
       <div className="overflow-y-auto w-full py-3">
-        {users.map((user) => (
+        {filteredUsers.map((user) => (
           <button
             key={user._id}
             onClick={() => setSelectedUser(user)}
