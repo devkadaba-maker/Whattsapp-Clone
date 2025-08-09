@@ -37,10 +37,10 @@ const MessageInput = () => {
         try{
             await sendMessage({
                 text:text.trim(),
-                image:imagePreveiw
+                image:imagePreview
             })
             setText("")
-            setImagePreveiw(null)
+            setImagePreview(null)
             if(fileInputRef.current) fileInputRef.current.value = ""
         }catch(error){
             toast.error(error.response?.data?.message || "error sending message")
