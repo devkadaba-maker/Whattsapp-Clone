@@ -5,10 +5,10 @@ import { Image } from "lucide-react"
 import { useChatStore } from "../store/useChatStore"
 
 const MessageInput = () => {
-    const {text, setText} = useState("")
-    const {imagePreveiw, setImagePreview} = useState(null)
+    const [text, setText] = useState("")
+    const [imagePreview, setImagePreview] = useState(null)
     const fileInputRef = useRef(null)
-    const { sendMessage}= useChatStore()
+    const { sendMessage } = useChatStore()
 
 
     const handleImageChange = (e) => {}
