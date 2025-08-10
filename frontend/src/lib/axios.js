@@ -1,6 +1,9 @@
+
 import axios from 'axios';
 
 export const axiosInstance = axios.create({
-  baseURL: import.meta.env.MODE === "development" ? `${window.location.protocol}//${window.location.hostname}:5000/api` : "/api",
+  baseURL: 'https://cb378054-078b-4d30-a41a-2135c7a4caff-00-2uq7d29wzoour.picard.replit.dev/api',
   withCredentials: true,
 });
+
+
