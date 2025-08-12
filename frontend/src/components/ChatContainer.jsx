@@ -8,7 +8,7 @@ import { useAuthStore } from "../store/useAuthStore";
 
 const ChatContainer = () => {
     const {messages, getMessages, isMessagesLoading, selectedUser} = useChatStore();
-    const [authUser] = useAuthStore();
+    const { authUser } = useAuthStore();
 
     useEffect(() => {
         getMessages(selectedUser._id);
@@ -34,14 +34,17 @@ const ChatContainer = () => {
                         className={`chat ${message.senderId === authUser._id ? "chat-end" :"chat-start"} `}
                         key={message._id}>
                         
-                    <div className = "chat-image avatar"></div>
-                        <div className = "size-10 rounded-full border">
-                        <img src={message.senderId === authUser._id ? authUser.profilepic || "/avatar.png": selectedUser.profilepic || "/avatar.png"} alt= "profile pic"/>
+                        <div className = "chat-image avatar">
+                            <div className = "size-10 rounded-full border">
+                                <img src={message.senderId === authUser._id ? authUser.profilepic || "/avatar.png": selectedUser.profilepic || "/avatar.png"} alt= "profile pic"/>
+                            </div>
                         </div>
-                    <div className = "chat-header mb-1">
-                        <time className = "text-xs text-base-content/70 opacity-50" >{message.createdAt}</time>
-                    </div>
-                        
+                        <div className = "chat-header mb-1">
+                            <time className = "text-xs text-base-content/70 opacity-50" >{message.createdAt}</time>
+                        </div>
+                        <div className="chat-bubble">
+                            {message.text}
+                        </div>
                     </div>
                 ))}
             
