@@ -1,21 +1,23 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Users } from 'lucide-react';
 import SidebarSkeleton from './skeletons/SidebarSkeleton';
 import { useChatStore } from '../store/useChatStore';
+import { useAuthStore } from '../store/useAuthStore';
 
 const Sidebar = () => {
   const { users, getUsers, isUsersLoading, selectedUser, setSelectedUser } = useChatStore();
-  const [filteredUsers, setFilteredUsers] = useState([]);
-  const onlineUsers = [];
+  const { onlineUsers } = useAuthStore();
+  const [showOnlineOnly, setShowOnlineOnly] = useState(false);
 
   useEffect(() => {
     getUsers();
   }, [getUsers]);
 
-  useEffect(() => {
-    setFilteredUsers(users);
-  }, [users]);
+  const visibleUsers = useMemo(() => {
+    const list = Array.isArray(users) ? users : [];
+    return showOnlineOnly ? list.filter((user) => onlineUsers.includes(user._id)) : list;
+  }, [showOnlineOnly, users, onlineUsers]);
 
   if (isUsersLoading) return <SidebarSkeleton />;
 
@@ -27,10 +29,22 @@ const Sidebar = () => {
           <span className="font-medium hidden lg:block">Contacts</span>
         </div>
         {/*todo: online filter toggle*/}
+        <div className="mt-3 hidden lg:flex items-center gap-2">
+          <label className="cursor-pointer flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={showOnlineOnly}
+              onChange={(e) => setShowOnlineOnly(e.target.checked)}
+              className="checkbox checkbox-sm"
+            />
+            <span className="text-sm">Show online only</span>
+          </label>
+          <span className="text-xs text-zinc-500">({onlineUsers.length - 1} online)</span>
+        </div>
       </div>
       
       <div className="overflow-y-auto w-full py-3">
-        {filteredUsers.map((user) => (
+        {visibleUsers.map((user) => (
           <button
             key={user._id}
             onClick={() => setSelectedUser(user)}
@@ -42,8 +56,8 @@ const Sidebar = () => {
           >
             <div className="relative mx-auto lg:mx-0">
               <img
-                src={user.profilePic || "/avatar.png"}
-                alt={user.name}
+                src={user.profilepic || user.profilePic || "/avatar.png"}
+                alt={user.fullName}
                 className="size-12 object-cover rounded-full"
               />
               {onlineUsers.includes(user._id) && (
@@ -63,7 +77,11 @@ const Sidebar = () => {
             </div>
           </button>
         ))}
-      </div>
+
+        {visibleUsers.length === 0 && (
+          <p className="px-3 text-sm text-zinc-500">No users found</p>
+        )}
+  </div>
     </aside>
   );
 };

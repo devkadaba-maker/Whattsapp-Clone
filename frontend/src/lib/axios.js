@@ -1,6 +1,8 @@
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+
 export const axiosInstance = axios.create({
-  baseURL: 'https://cb378054-078b-4d30-a41a-2135c7a4caff-00-2uq7d29wzoour.picard.replit.dev/api',
+  baseURL: API_URL,
   withCredentials: true,
 });

@@ -9,7 +9,7 @@ const Navbar = () => {
     return (
       <div className="navbar bg-base-100 border-b border-base-300">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">ChatApp</a>
+          <a className="btn btn-ghost text-xl">"Dev"eloper Chat</a>
         </div>
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100 border-b border-base-300">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">ChatApp</a>
+        <a className="btn btn-ghost text-xl">"Dev"eloper Chat</a>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
